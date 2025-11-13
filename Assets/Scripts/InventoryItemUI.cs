@@ -2,15 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
+
 
 public class InventoryItemUI : MonoBehaviour, IDropHandler
 {
     public ItemData itemData;
     public Movement player;
+    public Image itemSprite;
 
     void Start()
     {
         player = FindObjectOfType<Movement>();
+        itemSprite = gameObject.GetComponentInChildren<Image>();
+        itemSprite.sprite = itemData.icon;
     }
 
     public void OnDrop(PointerEventData eventData)

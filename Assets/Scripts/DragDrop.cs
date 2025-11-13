@@ -77,12 +77,11 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IBegin
             }
         }
 
-        // Snap and glow logic
         if (bestMatch != null)
         {
             Vector3 targetScreenPos = RectTransformUtility.WorldToScreenPoint(Camera.main, bestMatch.transform.position);
-            rectTransform.position = Vector3.Lerp(rectTransform.position, targetScreenPos, 0.75f); // smooth snap
-            if (bestMatch.reqItem == draggedItem) canvasGroup.alpha = 0.9f;
+            rectTransform.position = Vector3.Lerp(rectTransform.position, targetScreenPos, 0.75f);
+            if (bestMatch.reqItem == draggedItem) canvasGroup.alpha = 1f;
         }
         else
         {

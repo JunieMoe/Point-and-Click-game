@@ -1,6 +1,5 @@
-#if UNITY_EDITOR
+
 using UnityEditor;
-#endif
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -35,35 +34,29 @@ public class MoveNode : MonoBehaviour
                         NodeConnection conn = new NodeConnection
                         {
                             targetNode = node.gameObject,
-                            movementSpeed = 15f, // default
-                            animationTrigger = "Walk" // default
+                            movementSpeed = 5f,
+                            animationTrigger = "Walk" 
                         };
                         newConnections.Add(conn);
                     }
 
                     // Ensure bidirectional on the other node too
-                    if (!ConnectionExists(node.connections, this.gameObject))
+                    if (!ConnectionExists(node.connections, gameObject))
                     {
                         NodeConnection reverseConn = new NodeConnection
                         {
-                            targetNode = this.gameObject,
-                            movementSpeed = 15f,
+                            targetNode = gameObject,
+                            movementSpeed = 5f,
                             animationTrigger = "Walk"
                         };
                         node.connections.Add(reverseConn);
-                        #if UNITY_EDITOR
-                        EditorUtility.SetDirty(node);
-                        #endif
+
                     }
                 }
             }
         }
 
         connections = newConnections;
-
-#if UNITY_EDITOR
-        EditorUtility.SetDirty(this);
-#endif
     }
 
     private bool ConnectionExists(List<NodeConnection> connList, GameObject target)

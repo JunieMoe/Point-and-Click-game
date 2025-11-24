@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
         File.WriteAllText(saveFilePath, json);
         Debug.Log("Game saved to " + saveFilePath);
     }
-
+    // Load save data from external file
     public void LoadGame()
     {
         if (File.Exists(saveFilePath))
@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
             saveData = new SaveData();
         }
     }
-
+    // Retrieve inventory data from save file and load into player inventory by item name
     public void InitializeInventoryFromSave(List<ItemData> allItemData)
     {
         playerInventory = new Inventory();

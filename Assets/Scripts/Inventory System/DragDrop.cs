@@ -13,11 +13,14 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IBegin
 
     public float snapRadius;
 
+    public GameManager gm;
+
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         player = FindObjectOfType<Movement>();
+        gm = FindObjectOfType<GameManager>();
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -47,6 +50,11 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IBegin
             if (dist <= interactionRadius && node.GetComponent<ItemInteraction>().reqItem == gameObject.GetComponent<InventoryItemUI>().itemData && player.currentNode.GetComponent<MoveNode>() == node.interactionNode)
             {
                 node.Interact();
+                if (gameObject.GetComponent<InventoryItemUI>().itemData.consumable)
+                {
+                    gm.playerInventory.RemoveItem(gameObject.GetComponent<InventoryItemUI>().itemData);
+                    Destroy(gameObject);
+                }
             }
         }
 

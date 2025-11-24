@@ -2487,6 +2487,9 @@ MonoBehaviour:
   - targetNode: {fileID: 930396981}
     movementSpeed: 5
     animationTrigger: Walk
+  - targetNode: {fileID: 1150852245}
+    movementSpeed: 5
+    animationTrigger: Walk
   autoConnectRadius: 6.89
 --- !u!1 &430887378
 GameObject:
@@ -2764,6 +2767,7 @@ Transform:
   - {fileID: 556255876}
   - {fileID: 930396982}
   - {fileID: 405739797}
+  - {fileID: 1150852246}
   - {fileID: 1533036033}
   - {fileID: 782474769}
   - {fileID: 118077274}
@@ -5087,6 +5091,9 @@ MonoBehaviour:
   - targetNode: {fileID: 405739796}
     movementSpeed: 5
     animationTrigger: Walk
+  - targetNode: {fileID: 0}
+    movementSpeed: 5
+    animationTrigger: Walk
   autoConnectRadius: 5
 --- !u!1 &937404313
 GameObject:
@@ -5725,6 +5732,55 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1150852245
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1150852246}
+  - component: {fileID: 1150852247}
+  m_Layer: 6
+  m_Name: GameObject (5)
+  m_TagString: MoveNode
+  m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1150852246
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1150852245}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.56, y: -3.94, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 465052659}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1150852247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1150852245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1c00dce677ca554bbeb2af5850fe6d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connections:
+  - targetNode: {fileID: 405739796}
+    movementSpeed: 5
+    animationTrigger: Walk
+  autoConnectRadius: 6.89
 --- !u!1 &1162029230
 GameObject:
   m_ObjectHideFlags: 0
@@ -6426,6 +6482,9 @@ MonoBehaviour:
     movementSpeed: 5
     animationTrigger: Walk
   - targetNode: {fileID: 556255875}
+    movementSpeed: 5
+    animationTrigger: Walk
+  - targetNode: {fileID: 0}
     movementSpeed: 5
     animationTrigger: Walk
   autoConnectRadius: 7.87
@@ -9137,6 +9196,7 @@ MonoBehaviour:
   canvas: {fileID: 0}
   interactionRadius: 0.75
   snapRadius: 55
+  gm: {fileID: 0}
 --- !u!225 &1863862210
 CanvasGroup:
   m_ObjectHideFlags: 0

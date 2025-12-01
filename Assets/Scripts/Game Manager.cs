@@ -23,12 +23,15 @@ public class GameManager : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
 
         playerInventory = new Inventory();
 
         LoadGame();
+
+        DontDestroyOnLoad(gameObject);
+
     }
+
 
     public void SaveGame()
     {
@@ -63,11 +66,14 @@ public class GameManager : MonoBehaviour
 
             entranceNodeName = saveData.entranceNodeName;
 
-            SceneManager.LoadScene(saveData.currentScene);
+            SceneManager.LoadScene(saveData.currentScene); 
         }
         else
         {
             saveData = new SaveData();
+            saveData.entranceNodeName = "GameObject";
+            entranceNodeName = "GameObject";
+
         }
     }
     // Retrieve inventory data from save file and load into player inventory by item name

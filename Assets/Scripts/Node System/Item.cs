@@ -8,6 +8,7 @@ public class Item : MonoBehaviour
 
     void Start()
     {
+        /*
         if (GameManager.Instance == null) return;
 
         string myID = gameObject.name;
@@ -29,6 +30,7 @@ public class Item : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+        */
 
         string state = GameManager.Instance.GetInteractionState("Item_" + gameObject.name, "available");
         if (state == "pickedUp")

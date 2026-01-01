@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class SaveData
 {
     public List<string> inventoryItemNames = new List<string>();
-    public List<string> pickedUpItemIDs = new List<string>();
     public List<SceneStateData> sceneStates = new List<SceneStateData>();
 
     public string currentScene;

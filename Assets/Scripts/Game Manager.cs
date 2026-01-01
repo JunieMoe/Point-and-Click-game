@@ -26,35 +26,51 @@ public class GameManager : MonoBehaviour
 
         playerInventory = new Inventory();
 
-        LoadGame();
-
         DontDestroyOnLoad(gameObject);
 
     }
 
+
+    public void NewGame()
+    {
+        saveData = new SaveData();
+
+        saveData.currentScene = "SampleScene";
+
+        entranceNodeName = "GameObject";
+        saveData.entranceNodeName = entranceNodeName;
+
+        string json = JsonUtility.ToJson(saveData, true);
+        File.WriteAllText(saveFilePath, json);
+
+        LoadGame();
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 
     public void SaveGame()
     {
         if (saveData == null)
             saveData = new SaveData();
 
-        // Save current inventory
-        saveData.inventoryItemNames.Clear();
-        foreach (var item in playerInventory.GetItems())
-            saveData.inventoryItemNames.Add(item.itemName);
+        if (SceneManager.GetActiveScene().name != "MainMenu")
+        {
+            // Save current inventory
+            saveData.inventoryItemNames.Clear();
+            foreach (var item in playerInventory.GetItems())
+                saveData.inventoryItemNames.Add(item.itemName);
 
-        // Save picked-up item IDs (based on current scene)
-        saveData.pickedUpItemIDs.Clear();
-        Item[] allItems = FindObjectsOfType<Item>();
-        foreach (Item item in allItems)
-            saveData.pickedUpItemIDs.Add(item.gameObject.name); 
+            saveData.currentScene = SceneManager.GetActiveScene().name;
+            saveData.entranceNodeName = entranceNodeName;
 
-        saveData.currentScene = SceneManager.GetActiveScene().name;
-        saveData.entranceNodeName = entranceNodeName;
+            string json = JsonUtility.ToJson(saveData, true);
+            File.WriteAllText(saveFilePath, json);
+            Debug.Log("Game saved to " + saveFilePath);
+        }
 
-        string json = JsonUtility.ToJson(saveData, true);
-        File.WriteAllText(saveFilePath, json);
-        Debug.Log("Game saved to " + saveFilePath);
     }
     // Load save data from external file
     public void LoadGame()
@@ -67,13 +83,6 @@ public class GameManager : MonoBehaviour
             entranceNodeName = saveData.entranceNodeName;
 
             SceneManager.LoadScene(saveData.currentScene); 
-        }
-        else
-        {
-            saveData = new SaveData();
-            saveData.entranceNodeName = "GameObject";
-            entranceNodeName = "GameObject";
-
         }
     }
     // Retrieve inventory data from save file and load into player inventory by item name

@@ -30,6 +30,11 @@ public class Movement : MonoBehaviour
     private Animator animator;
     private string currentTrigger = "";
 
+    private void Awake()
+    {
+        gameManager = GameManager.Instance;
+    }
+
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -51,7 +56,7 @@ public class Movement : MonoBehaviour
 
     private void Start()
     {
-        gameManager = GameManager.Instance;
+
         mainCamera = Camera.main;
         allItems = new List<ItemData>(Resources.LoadAll<ItemData>("Items"));
         GameManager.Instance.InitializeInventoryFromSave(allItems);

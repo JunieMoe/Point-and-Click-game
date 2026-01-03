@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
 
         saveData.currentScene = "SampleScene";
 
-        entranceNodeName = "GameObject";
+        entranceNodeName = "ConveyorMoveNode";
         saveData.entranceNodeName = entranceNodeName;
 
         string json = JsonUtility.ToJson(saveData, true);

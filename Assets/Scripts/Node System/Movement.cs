@@ -70,20 +70,6 @@ public class Movement : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    private void RefreshNodes()
-    {
-        List<GameObject> nodeList = new List<GameObject>();
-        foreach (GameObject obj in FindObjectsOfType<GameObject>())
-        {
-            if (obj.layer == nodeLayer)
-            {
-                nodeList.Add(obj);
-            }
-        }
-
-        nodes = nodeList.ToArray();
-    }
-
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -113,6 +99,21 @@ public class Movement : MonoBehaviour
             }
         }
     }
+
+    private void RefreshNodes()
+    {
+        List<GameObject> nodeList = new List<GameObject>();
+        foreach (GameObject obj in FindObjectsOfType<GameObject>())
+        {
+            if (obj.layer == nodeLayer)
+            {
+                nodeList.Add(obj);
+            }
+        }
+
+        nodes = nodeList.ToArray();
+    }
+
 
     private void HandleItemClick(Item item)
     {

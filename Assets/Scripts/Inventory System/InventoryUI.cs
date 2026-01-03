@@ -25,11 +25,13 @@ public class InventoryUI : MonoBehaviour
 
     public void RefreshInventory()
     {
+        //ensure items dont duplicate
         foreach (Transform child in slotContainer)
         {
             if (child == slotTemplate) continue;
             Destroy(child.gameObject);
         }
+
 
         int y = 0;
         float slotSize = 30f;

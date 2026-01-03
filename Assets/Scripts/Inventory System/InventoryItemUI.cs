@@ -22,8 +22,6 @@ public class InventoryItemUI : MonoBehaviour, IDropHandler
     {
         if (eventData.pointerDrag.GetComponent<InventoryItemUI>().itemData.isIngredient && eventData.pointerDrag.GetComponent<InventoryItemUI>().itemData.combineWith == itemData)
         {
-            Debug.Log("combined "+ eventData.pointerDrag.GetComponent<InventoryItemUI>().itemData+"with "+itemData);
-            Debug.Log("created " + eventData.pointerDrag.GetComponent<InventoryItemUI>().itemData.result);
             Destroy(gameObject);
             Destroy(eventData.pointerDrag);
             player.inventory.RemoveItem(itemData);
